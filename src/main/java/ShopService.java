@@ -27,4 +27,9 @@ public class ShopService {
                 .toList();
         return orderWithSpecificStaus;
     }
+
+    public void updateOrder(String orderId, Bestellstatus status) {
+        Order order = orderRepo.getOrderById(orderId);
+        order.withBestellstatus(status);
+    }
 }

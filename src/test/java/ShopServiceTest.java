@@ -33,4 +33,19 @@ class ShopServiceTest {
         //THEN
         assertNull(actual);
     }
+    
+    @Test
+    void getOrdersWithSpecificOrderStatus_whenSameStatus_expectedTrue(){
+        //GIVEN
+        ShopService shopService = new ShopService();
+
+        //WHEN
+        List<Order> actual = shopService.getOrdersWithSpecificOrderStatus(Bestellstatus.PROCESSING);
+
+        //THEN
+        for (Order order : actual) {
+            assertEquals(Bestellstatus.PROCESSING,order.bestellstatus());
+        }
+    }
+
 }
